@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProfitPal – True-Profit & Return Analyzer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== 1. TOP HEADER BAR ===== -->
+  <header class="top-header">
+    <div class="header-inner">
+      <div class="brand-block">
+        <!-- Geometric Mascot SVG -->
+        <svg class="header-mascot" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="30" cy="38" rx="20" ry="18" fill="#FFD43B"/>
+          <circle cx="30" cy="22" r="15" fill="#FFD43B"/>
+          <circle cx="24" cy="20" r="2.5" fill="#1E1B4B"/>
+          <circle cx="36" cy="20" r="2.5" fill="#1E1B4B"/>
+          <circle cx="24.8" cy="19.2" r="0.9" fill="#fff"/>
+          <circle cx="36.8" cy="19.2" r="0.9" fill="#fff"/>
+          <path d="M25 26 Q30 30 35 26" stroke="#1E1B4B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <rect x="10" y="40" width="40" height="20" rx="8" fill="#5B3FE8"/>
+        </svg>
+        <div>
+          <div class="brand-name">ProfitPal</div>
+          <div class="brand-sub">Dashboard Cuan Mandiri Gen-Z &amp; Penerus Keluarga UMKM</div>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <!-- Dataset badge -->
+        <div class="dataset-badge" id="datasetBadge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span id="datasetBadgeText">dataset_umkm_profitpal_100.csv · 100 baris</span>
+        </div>
+
+        <!-- Hidden file input -->
+        <input type="file" id="csvFileInput" accept=".csv" style="display:none" aria-label="Upload CSV dataset"/>
+
+        <!-- Upload CSV button -->
+        <button class="btn btn-outline" id="uploadCsvBtn" onclick="document.getElementById('csvFileInput').click()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          Upload CSV
+        </button>
+
+        <!-- Simulasi toggle -->
+        <button class="btn btn-primary" id="toggleSimBtn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Simulasi Produk
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+
+    <!-- ===== FILE PROMPT (shown when local file:// blocks fetch) ===== -->
+    <div id="filePrompt" class="file-prompt hidden">
+      <div class="file-prompt-inner">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5B3FE8" stroke-width="1.8" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        <h2>Yuk, muat dataset dulu! 📂</h2>
+        <p>Browser ini membatasi akses file lokal. Pilih file <strong>dataset_umkm_profitpal_100.csv</strong> dari komputer kamu untuk mulai analisis.</p>
+        <button class="btn btn-primary btn-lg" onclick="document.getElementById('csvFileInput').click()">📂 Pilih File CSV</button>
+      </div>
+    </div>
+
+    <!-- ===== 2. MULTI-DIMENSIONAL FILTER BAR ===== -->
+    <section class="filter-bar" aria-label="Filter data">
+      <div class="filter-group">
+        <span class="filter-label">Kategori:</span>
+        <div class="filter-pills" id="filterKategori" role="group" aria-label="Filter kategori">
+          <button class="pill active" data-filter="kategori" data-value="Semua">Semua</button>
+          <button class="pill" data-filter="kategori" data-value="F&B Kekinian">F&B Kekinian</button>
+          <button class="pill" data-filter="kategori" data-value="Produk Keluarga">Produk Keluarga</button>
+          <button class="pill" data-filter="kategori" data-value="Fashion & Craft">Fashion &amp; Craft</button>
+          <button class="pill" data-filter="kategori" data-value="Personal Care Lokal">Personal Care Lokal</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Tipe:</span>
+        <div class="filter-pills" id="filterTipe" role="group" aria-label="Filter tipe bisnis">
+          <button class="pill active" data-filter="tipe" data-value="Semua">Semua Tipe</button>
+          <button class="pill" data-filter="tipe" data-value="Mandiri Gen-Z">Mandiri Gen-Z</button>
+          <button class="pill" data-filter="tipe" data-value="Penerus Keluarga">Penerus Keluarga</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Channel:</span>
+        <select class="filter-select" id="filterChannel" aria-label="Filter channel penjualan">
+          <option value="Semua">Semua Channel</option>
+          <option value="TikTok Shop">TikTok Shop</option>
+          <option value="Shopee">Shopee</option>
+          <option value="Tokopedia">Tokopedia</option>
+          <option value="Instagram Shop">Instagram Shop</option>
+        </select>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Status:</span>
+        <div class="filter-pills" id="filterStatus" role="group" aria-label="Filter status SKU">
+          <button class="pill active" data-filter="status" data-value="Semua">Semua</button>
+          <button class="pill pill-star" data-filter="status" data-value="Star Profit">⭐ Star Profit</button>
+          <button class="pill pill-watch" data-filter="status" data-value="Watchlist">👀 Watchlist</button>
+          <button class="pill pill-bleed" data-filter="status" data-value="Profit Bleeder">🩸 Profit Bleeder</button>
+        </div>
+      </div>
+      <button class="btn btn-reset" id="resetFilterBtn">↺ Reset Filter</button>
+    </section>
+
+    <!-- ===== 3. HERO PROFIT HEALTH SCORE CARD ===== -->
+    <section class="hero-health-card" id="heroHealthCard" aria-label="Skor kesehatan cuan">
+      <div class="hero-health-left">
+        <div class="health-label">Skor Kesehatan Cuan 💎</div>
+        <div class="health-score" id="healthScore">--</div>
+        <div class="health-status" id="healthStatus">Memuat...</div>
+        <!-- Shape Friends Mascots -->
+        <div class="shape-friends" aria-hidden="true">
+          <!-- Yellow Teardrop -->
+          <svg class="friend friend-1" viewBox="0 0 60 70" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 5 C10 20 5 40 10 55 Q20 72 30 70 Q40 72 50 55 C55 40 50 20 30 5Z" fill="#FFD43B"/>
+            <circle cx="23" cy="40" r="3" fill="#1E1B4B"/>
+            <circle cx="37" cy="40" r="3" fill="#1E1B4B"/>
+            <circle cx="24" cy="39" r="1" fill="#fff"/>
+            <circle cx="38" cy="39" r="1" fill="#fff"/>
+            <path d="M24 48 Q30 54 36 48" stroke="#1E1B4B" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <!-- Pink 4-Petal Flower -->
+          <svg class="friend friend-2" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="35" cy="18" rx="12" ry="16" fill="#FF7EB3"/>
+            <ellipse cx="35" cy="52" rx="12" ry="16" fill="#FF7EB3"/>
+            <ellipse cx="18" cy="35" rx="16" ry="12" fill="#FF7EB3"/>
+            <ellipse cx="52" cy="35" rx="16" ry="12" fill="#FF7EB3"/>
+            <circle cx="35" cy="35" r="16" fill="#FFE4F0"/>
+            <circle cx="29" cy="33" r="2.5" fill="#1E1B4B"/>
+            <circle cx="41" cy="33" r="2.5" fill="#1E1B4B"/>
+            <circle cx="30" cy="32" r="0.9" fill="#fff"/>
+            <circle cx="42" cy="32" r="0.9" fill="#fff"/>
+            <path d="M29 40 Q35 45 41 40" stroke="#1E1B4B" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          </svg>
+          <!-- Pastel Purple Dome -->
+          <svg class="friend friend-3" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="35" cy="45" rx="28" ry="20" fill="#B6A6FF"/>
+            <path d="M7 45 Q7 15 35 15 Q63 15 63 45Z" fill="#B6A6FF"/>
+            <circle cx="27" cy="38" r="3" fill="#1E1B4B"/>
+            <circle cx="43" cy="38" r="3" fill="#1E1B4B"/>
+            <circle cx="28" cy="37" r="1.1" fill="#fff"/>
+            <circle cx="44" cy="37" r="1.1" fill="#fff"/>
+            <path d="M27 46 Q35 52 43 46" stroke="#1E1B4B" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <!-- Coral Rounded Square -->
+          <svg class="friend friend-4" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="8" width="54" height="54" rx="18" ry="18" fill="#FF8A65"/>
+            <circle cx="27" cy="33" r="3" fill="#1E1B4B"/>
+            <circle cx="43" cy="33" r="3" fill="#1E1B4B"/>
+            <circle cx="28" cy="32" r="1.1" fill="#fff"/>
+            <circle cx="44" cy="32" r="1.1" fill="#fff"/>
+            <path d="M27 42 Q35 48 43 42" stroke="#1E1B4B" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+          <!-- Mint Green Circle -->
+          <svg class="friend friend-5" viewBox="0 0 70 70" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="35" cy="35" r="30" fill="#34D399"/>
+            <circle cx="27" cy="33" r="3" fill="#1E1B4B"/>
+            <circle cx="43" cy="33" r="3" fill="#1E1B4B"/>
+            <circle cx="28" cy="32" r="1.1" fill="#fff"/>
+            <circle cx="44" cy="32" r="1.1" fill="#fff"/>
+            <path d="M27 42 Q35 48 43 42" stroke="#1E1B4B" stroke-width="2" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-health-right">
+        <div class="health-summary-card">
+          <div class="summary-title" id="summaryArchetype">Business Archetype</div>
+          <div class="summary-stats">
+            <div class="stat-item">
+              <span class="stat-label">Rata-rata Net Margin</span>
+              <span class="stat-value positive" id="avgNetMargin">--%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Rata-rata Return Rate</span>
+              <span class="stat-value" id="avgReturnRate">--%</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-label">Total Transaksi</span>
+              <span class="stat-value" id="totalTrx">-- baris</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. KPI CARDS ===== -->
+    <section class="kpi-grid" aria-label="KPI utama">
+      <article class="kpi-card kpi-purple">
+        <div class="kpi-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="kpi-label">Omzet Kotor</div>
+        <div class="kpi-value" id="kpiGrossRevenue">Rp --</div>
+        <div class="kpi-sub">Gross Revenue</div>
+      </article>
+      <article class="kpi-card kpi-yellow">
+        <div class="kpi-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="kpi-label">True Net Profit</div>
+        <div class="kpi-value" id="kpiNetProfit">Rp --</div>
+        <div class="kpi-sub">Setelah HPP, Iklan, Retur</div>
+      </article>
+      <article class="kpi-card kpi-lavender">
+        <div class="kpi-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+        </div>
+        <div class="kpi-label">Total Biaya Iklan</div>
+        <div class="kpi-value" id="kpiAdSpend">Rp --</div>
+        <div class="kpi-sub">Ad Spend Total</div>
+      </article>
+      <article class="kpi-card kpi-pink">
+        <div class="kpi-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/></svg>
+        </div>
+        <div class="kpi-label">Kerugian Retur</div>
+        <div class="kpi-value" id="kpiReturnLoss">Rp --</div>
+        <div class="kpi-sub">Return Loss Total</div>
+      </article>
+    </section>
+
+    <!-- ===== 5. COMPARISON CARDS ===== -->
+    <section class="comparison-grid" aria-label="Perbandingan produk terbaik dan terburuk">
+      <article class="compare-card compare-top" id="compareTop">
+        <div class="compare-header">
+          <span class="compare-emoji">🏆</span>
+          <div>
+            <div class="compare-title">Paling Gacor</div>
+            <div class="compare-subtitle">Top Profit SKU</div>
+          </div>
+        </div>
+        <div class="compare-sku" id="topProfitSku">--</div>
+        <div class="compare-name" id="topProfitName">--</div>
+        <div class="compare-stats" id="topProfitStats">
+          <div class="cstat"><span class="cstat-l">Net Profit</span><span class="cstat-v green" id="topProfitValue">Rp --</span></div>
+          <div class="cstat"><span class="cstat-l">Net Margin</span><span class="cstat-v" id="topProfitMargin">--%</span></div>
+          <div class="cstat"><span class="cstat-l">Return Rate</span><span class="cstat-v" id="topProfitRR">--%</span></div>
+          <div class="cstat"><span class="cstat-l">Alasan Retur</span><span class="cstat-v small" id="topProfitReason">--</span></div>
+        </div>
+      </article>
+
+      <article class="compare-card compare-bleed" id="compareBleed">
+        <div class="compare-header">
+          <span class="compare-emoji">🩸</span>
+          <div>
+            <div class="compare-title">Paling Bocor</div>
+            <div class="compare-subtitle">Highest Bleed SKU</div>
+          </div>
+        </div>
+        <div class="compare-sku" id="bleedSku">--</div>
+        <div class="compare-name" id="bleedName">--</div>
+        <div class="compare-stats" id="bleedStats">
+          <div class="cstat"><span class="cstat-l">Net Profit</span><span class="cstat-v red" id="bleedValue">Rp --</span></div>
+          <div class="cstat"><span class="cstat-l">Net Margin</span><span class="cstat-v" id="bleedMargin">--%</span></div>
+          <div class="cstat"><span class="cstat-l">Return Rate</span><span class="cstat-v" id="bleedRR">--%</span></div>
+          <div class="cstat"><span class="cstat-l">Alasan Retur</span><span class="cstat-v small" id="bleedReason">--</span></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== 6. WAVE CHART + LANYARD ID CARD ===== -->
+    <section class="chart-showcase" aria-label="Grafik wave dan kartu pemilik">
+
+      <!-- LEFT: Wave Chart Card (~70%) -->
+      <div class="wave-chart-card" id="waveChartCard">
+        <!-- Three-dot decoration -->
+        <div class="wave-card-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+
+        <!-- Dynamic Header (filled by JS) -->
+        <div class="wave-card-header">
+          <div class="wave-header-label">Total True Net Profit (12 SKU)</div>
+          <div class="wave-header-hero">
+            <span class="wave-hero-num" id="waveHeroNum">Rp --</span>
+            <span class="wave-margin-badge" id="waveMarginBadge">↑ --% Margin</span>
+          </div>
+          <div class="wave-header-sub" id="waveHeaderSub">Dibandingkan total Omzet Kotor Rp -- setelah potongan iklan &amp; retur</div>
+        </div>
+
+        <!-- Legend -->
+        <div class="wave-legend" aria-hidden="true">
+          <span class="wleg"><span class="wleg-line" style="background:linear-gradient(90deg,#34D399,#4DA8F5)"></span>Gross Revenue</span>
+          <span class="wleg"><span class="wleg-line" style="background:linear-gradient(90deg,#B6A6FF,#5B3FE8)"></span>True Net Profit</span>
+          <span class="wleg"><span class="wleg-line" style="background:linear-gradient(90deg,#FF7EB3,#FF8A65)"></span>Biaya Iklan</span>
+          <span class="wleg"><span class="wleg-line" style="background:#FFD43B"></span>Kerugian Retur</span>
+        </div>
+
+        <!-- SVG Wave Chart (built by JS) -->
+        <div class="wave-svg-wrap">
+          <svg id="waveChartSvg" class="wave-chart-svg" role="img"
+               aria-label="Mirrored wave area chart: Gross Revenue, Net Profit, Ad Spend, Return Loss per SKU"
+               preserveAspectRatio="none">
+            <defs id="waveGradDefs"></defs>
+          </svg>
+          <!-- Tooltip box -->
+          <div class="wave-tooltip hidden" id="waveTooltip" role="tooltip" aria-live="polite"></div>
+        </div>
+
+        <!-- Bottom SKU axis labels (filled by JS) -->
+        <div class="wave-xaxis" id="waveXAxis" aria-hidden="true"></div>
+      </div>
+
+      <!-- RIGHT: Hanging Lanyard ID Card (~300px) -->
+      <div class="lanyard-column" aria-label="Kartu nama pemilik">
+        <!-- Lanyard strap + clip -->
+        <div class="lanyard-strap" aria-hidden="true">
+          <div class="lanyard-rope"></div>
+          <!-- Metallic ring + clip SVG -->
+          <svg class="lanyard-clip" viewBox="0 0 40 54" xmlns="http://www.w3.org/2000/svg">
+            <!-- Ring -->
+            <ellipse cx="20" cy="12" rx="11" ry="7" fill="none" stroke="#C0C0C0" stroke-width="4"/>
+            <ellipse cx="20" cy="12" rx="11" ry="7" fill="none" stroke="#E8E8E8" stroke-width="2"/>
+            <!-- Clip body -->
+            <rect x="13" y="17" width="14" height="20" rx="4" fill="#B0B0B0"/>
+            <rect x="15" y="19" width="10" height="16" rx="3" fill="#D8D8D8"/>
+            <rect x="17" y="22" width="6" height="4" rx="2" fill="#A0A0A0"/>
+            <!-- Shine -->
+            <line x1="16" y1="20" x2="16" y2="33" stroke="#F0F0F0" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+          </svg>
+        </div>
+
+        <!-- Card body -->
+        <div class="id-card">
+          <!-- Punch hole at top -->
+          <div class="card-punch" aria-hidden="true"></div>
+
+          <!-- Top section: Role + Name -->
+          <div class="card-top">
+            <div class="card-role">PEMILIK</div>
+            <div class="card-name">Luqman</div>
+          </div>
+
+          <!-- Middle section -->
+          <div class="card-middle">
+            <!-- Left: emblem + sticker -->
+            <div class="card-mid-left">
+              <!-- Emblem circle -->
+              <div class="card-emblem" aria-hidden="true">
+                <div class="emblem-dot"></div>
+                <div class="emblem-dot"></div>
+              </div>
+              <!-- ProfitPal sticker -->
+              <div class="card-sticker" aria-label="ProfitPal brand sticker">
+                ProfitPal<span class="sticker-dot" aria-hidden="true"></span>
+              </div>
+            </div>
+            <!-- Right: mascot portrait -->
+            <div class="card-portrait-frame" aria-hidden="true">
+              <svg class="card-mascot-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <!-- Glasses frames -->
+                <circle cx="36" cy="44" r="12" fill="none" stroke="#1E1B4B" stroke-width="3.5"/>
+                <circle cx="64" cy="44" r="12" fill="none" stroke="#1E1B4B" stroke-width="3.5"/>
+                <line x1="48" y1="44" x2="52" y2="44" stroke="#1E1B4B" stroke-width="3"/>
+                <line x1="24" y1="40" x2="18" y2="37" stroke="#1E1B4B" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="76" y1="40" x2="82" y2="37" stroke="#1E1B4B" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- Eyes behind glass -->
+                <circle cx="36" cy="44" r="5" fill="#1E1B4B"/>
+                <circle cx="64" cy="44" r="5" fill="#1E1B4B"/>
+                <circle cx="38" cy="42" r="1.8" fill="#fff"/>
+                <circle cx="66" cy="42" r="1.8" fill="#fff"/>
+                <!-- Nose -->
+                <circle cx="50" cy="54" r="2" fill="#1E1B4B" opacity="0.4"/>
+                <!-- Warm smile -->
+                <path d="M38 65 Q50 76 62 65" stroke="#1E1B4B" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <!-- Blush -->
+                <ellipse cx="29" cy="62" rx="6" ry="4" fill="#FF7EB3" opacity="0.4"/>
+                <ellipse cx="71" cy="62" rx="6" ry="4" fill="#FF7EB3" opacity="0.4"/>
+                <!-- Hair / head top -->
+                <path d="M20 44 Q20 15 50 15 Q80 15 80 44" fill="#1E1B4B"/>
+                <!-- Collar -->
+                <path d="M30 95 Q38 80 50 78 Q62 80 70 95" fill="#5B3FE8"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Bottom dark footer -->
+          <div class="card-footer">
+            <div class="card-date">
+              <span class="date-day">18</span>
+              <div class="date-text">
+                <span>November</span>
+                <span>2026</span>
+              </div>
+            </div>
+            <!-- Barcode SVG -->
+            <svg class="card-barcode" viewBox="0 0 80 44" xmlns="http://www.w3.org/2000/svg" aria-label="Barcode" role="img">
+              <rect x="0"  y="0" width="3"  height="44" fill="#fff"/>
+              <rect x="5"  y="0" width="1.5"height="44" fill="#fff"/>
+              <rect x="8"  y="0" width="2"  height="44" fill="#fff"/>
+              <rect x="12" y="0" width="1"  height="44" fill="#fff"/>
+              <rect x="15" y="0" width="3"  height="44" fill="#fff"/>
+              <rect x="20" y="0" width="1.5"height="44" fill="#fff"/>
+              <rect x="23" y="0" width="2"  height="44" fill="#fff"/>
+              <rect x="27" y="0" width="1"  height="44" fill="#fff"/>
+              <rect x="30" y="0" width="2.5"height="44" fill="#fff"/>
+              <rect x="34" y="0" width="1"  height="44" fill="#fff"/>
+              <rect x="37" y="0" width="3"  height="44" fill="#fff"/>
+              <rect x="42" y="0" width="1.5"height="44" fill="#fff"/>
+              <rect x="45" y="0" width="2"  height="44" fill="#fff"/>
+              <rect x="49" y="0" width="1"  height="44" fill="#fff"/>
+              <rect x="52" y="0" width="3"  height="44" fill="#fff"/>
+              <rect x="57" y="0" width="1"  height="44" fill="#fff"/>
+              <rect x="60" y="0" width="2"  height="44" fill="#fff"/>
+              <rect x="64" y="0" width="1.5"height="44" fill="#fff"/>
+              <rect x="67" y="0" width="2"  height="44" fill="#fff"/>
+              <rect x="71" y="0" width="1"  height="44" fill="#fff"/>
+              <rect x="74" y="0" width="3"  height="44" fill="#fff"/>
+              <rect x="79" y="0" width="1"  height="44" fill="#fff"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===== 7. TACTICAL RECOMMENDATIONS ===== -->
+    <section class="recommendations-section" aria-label="Rekomendasi taktis">
+      <div class="section-header">
+        <h2>💡 Rekomendasi Taktis Otomatis</h2>
+        <span class="section-sub">Berdasarkan analisis data aktual</span>
+      </div>
+      <div class="reco-grid" id="recoGrid">
+        <!-- Filled by JS -->
+      </div>
+    </section>
+
+    <!-- ===== 8. AUDIT TABLE ===== -->
+    <section class="audit-section" aria-label="Log audit transaksi">
+
+      <!-- Header bar -->
+      <div class="audit-header">
+        <div class="audit-header-left">
+          <h2 class="audit-title">Log Audit Transaksi</h2>
+          <span class="audit-count-badge" id="auditCountBadge">100 Transaksi</span>
+        </div>
+        <div class="audit-header-right">
+          <div class="audit-search-wrap">
+            <svg class="audit-search-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="8.5" cy="8.5" r="5.75" stroke="#9CA3AF" stroke-width="1.8"/>
+              <path d="M13 13 L17 17" stroke="#9CA3AF" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input
+              type="search"
+              id="auditSearch"
+              class="audit-search"
+              placeholder="Cari produk, SKU, ID transaksi, atau channel..."
+              aria-label="Cari transaksi"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="audit-table-wrap">
+        <table class="at-table" id="atTable" aria-label="Log transaksi">
+          <thead>
+            <tr>
+              <th class="at-th at-th-sortable" data-col="nama_produk" aria-sort="none">
+                Produk &amp; Transaksi <span class="sort-icon" aria-hidden="true">↕</span>
+              </th>
+              <th class="at-th at-th-sortable" data-col="trueNetProfit" aria-sort="none">
+                True Net Profit <span class="sort-icon" aria-hidden="true">↕</span>
+              </th>
+              <th class="at-th at-th-sortable" data-col="status" aria-sort="none">
+                Status &amp; Channel <span class="sort-icon" aria-hidden="true">↕</span>
+              </th>
+              <th class="at-th at-th-sortable" data-col="netMargin" aria-sort="none">
+                Net Margin <span class="sort-icon" aria-hidden="true">↕</span>
+              </th>
+              <th class="at-th at-th-action" aria-label="Aksi"></th>
+            </tr>
+          </thead>
+          <tbody id="atBody"></tbody>
+        </table>
+        <div class="at-empty hidden" id="atEmpty">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <p>Tidak ada transaksi yang cocok.</p>
+        </div>
+      </div>
+
+      <!-- Pagination footer -->
+      <div class="audit-footer">
+        <div class="audit-page-btns">
+          <button class="at-page-btn" id="atPrevBtn" disabled aria-label="Halaman sebelumnya">← Sebelumnya</button>
+          <button class="at-page-btn" id="atNextBtn" aria-label="Halaman berikutnya">Berikutnya →</button>
+        </div>
+        <div class="audit-page-info" id="auditPageInfo">Menampilkan 1–5 dari 100 transaksi (Halaman 1 dari 20)</div>
+      </div>
+
+    </section>
+
+    <!-- ===== TRANSACTION DETAIL MODAL ===== -->
+    <div class="modal-backdrop hidden" id="trxModalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-card" id="trxModalCard">
+        <button class="modal-close" id="modalCloseBtn" aria-label="Tutup modal">✕</button>
+        <div class="modal-body" id="modalBody"></div>
+      </div>
+    </div>
+
+    <!-- ===== 9. SIMULASI TAMBAH DATA PANEL ===== -->
+    <section class="simulasi-panel hidden" id="simulasiPanel" aria-label="Simulasi tambah produk">
+      <div class="section-header">
+        <h2>🧪 Simulasi Tambah Data Produk</h2>
+        <span class="section-sub">Test skenario baru – langsung lihat dampaknya ke dashboard!</span>
+      </div>
+      <form class="sim-form" id="simForm" onsubmit="handleSimSubmit(event)" novalidate>
+        <div class="sim-grid">
+          <div class="sim-field">
+            <label for="simNama">Nama Produk</label>
+            <input type="text" id="simNama" placeholder="Contoh: Es Kopi Susu Coklat" required/>
+          </div>
+          <div class="sim-field">
+            <label for="simKategori">Kategori</label>
+            <select id="simKategori">
+              <option>F&B Kekinian</option>
+              <option>Produk Keluarga</option>
+              <option>Fashion & Craft</option>
+              <option>Personal Care Lokal</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <label for="simTipe">Tipe Bisnis</label>
+            <select id="simTipe">
+              <option>Mandiri Gen-Z</option>
+              <option>Penerus Keluarga</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <label for="simChannel">Channel</label>
+            <select id="simChannel">
+              <option>Shopee</option>
+              <option>TikTok Shop</option>
+              <option>Tokopedia</option>
+              <option>Instagram Shop</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <label for="simHarga">Harga Jual (Rp)</label>
+            <input type="number" id="simHarga" placeholder="75000" min="1" required/>
+          </div>
+          <div class="sim-field">
+            <label for="simHpp">HPP per Unit (Rp)</label>
+            <input type="number" id="simHpp" placeholder="32000" min="0" required/>
+          </div>
+          <div class="sim-field">
+            <label for="simUnit">Unit Terjual</label>
+            <input type="number" id="simUnit" placeholder="100" min="1" required/>
+          </div>
+          <div class="sim-field">
+            <label for="simIklan">Biaya Iklan (Rp)</label>
+            <input type="number" id="simIklan" placeholder="500000" min="0" required/>
+          </div>
+          <div class="sim-field">
+            <label for="simRetur">Unit Retur</label>
+            <input type="number" id="simRetur" placeholder="2" min="0" required/>
+          </div>
+          <div class="sim-field">
+            <label for="simAlasan">Alasan Retur</label>
+            <input type="text" id="simAlasan" placeholder="Contoh: Ukuran tidak sesuai"/>
+          </div>
+        </div>
+        <div class="sim-actions">
+          <button type="submit" class="btn btn-primary">🚀 Simulasikan &amp; Perbarui Dashboard</button>
+          <button type="button" class="btn btn-outline" id="simRemoveBtn" onclick="removeSimRow()" style="display:none">🗑️ Hapus Simulasi</button>
+        </div>
+        <div id="simPreview" class="sim-preview hidden"></div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Sparkle decorations -->
+  <div class="sparkle-container" aria-hidden="true">
+    <svg class="sparkle s1" viewBox="0 0 20 20"><path d="M10 0 L11.5 8.5 L20 10 L11.5 11.5 L10 20 L8.5 11.5 L0 10 L8.5 8.5Z" fill="#FFD43B"/></svg>
+    <svg class="sparkle s2" viewBox="0 0 20 20"><path d="M10 0 L11.5 8.5 L20 10 L11.5 11.5 L10 20 L8.5 11.5 L0 10 L8.5 8.5Z" fill="#B6A6FF"/></svg>
+    <svg class="sparkle s3" viewBox="0 0 20 20"><path d="M10 0 L11.5 8.5 L20 10 L11.5 11.5 L10 20 L8.5 11.5 L0 10 L8.5 8.5Z" fill="#34D399"/></svg>
+    <svg class="sparkle s4" viewBox="0 0 20 20"><path d="M10 0 L11.5 8.5 L20 10 L11.5 11.5 L10 20 L8.5 11.5 L0 10 L8.5 8.5Z" fill="#FF7EB3"/></svg>
+    <svg class="sparkle s5" viewBox="0 0 20 20"><path d="M10 0 L11.5 8.5 L20 10 L11.5 11.5 L10 20 L8.5 11.5 L0 10 L8.5 8.5Z" fill="#FF8A65"/></svg>
+    <div class="dot d1"></div>
+    <div class="dot d2"></div>
+    <div class="dot d3"></div>
+    <div class="dot d4"></div>
+    <div class="dot d5"></div>
+    <div class="dot d6"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

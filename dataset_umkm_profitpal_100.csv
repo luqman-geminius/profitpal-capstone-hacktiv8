@@ -1,0 +1,101 @@
+id_transaksi,tanggal,sku_id,nama_produk,kategori,tipe_bisnis,channel_penjualan,harga_jual,hpp_per_unit,unit_terjual,biaya_iklan,unit_retur,alasan_retur_utama
+TRX-001,2026-10-01,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Shopee,75000,32000,85,620000,1,Kurir terlambat
+TRX-002,2026-10-01,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,TikTok Shop,45000,19000,110,540000,2,Segel tutup penyok
+TRX-003,2026-10-02,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,165000,82000,60,2650000,14,Ukuran tidak sesuai chart
+TRX-004,2026-10-02,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,Shopee,28000,12000,140,410000,3,Cokelat meleleh di jalan
+TRX-005,2026-10-03,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Tokopedia,89000,44000,52,1150000,6,Rasa terlalu pahit
+TRX-006,2026-10-03,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,Shopee,65000,26000,78,480000,1,Salah kirim motif
+TRX-007,2026-10-04,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,TikTok Shop,38000,18500,120,1750000,22,Pouch pecah saat pengiriman
+TRX-008,2026-10-04,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Tokopedia,210000,105000,38,680000,2,Warna sedikit beda foto
+TRX-009,2026-10-05,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,Shopee,55000,27000,72,790000,7,Kemasan kurang kedap
+TRX-010,2026-10-05,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,135000,68000,58,1950000,11,Benang tersangkut & sempit
+TRX-011,2026-10-06,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,TikTok Shop,59000,21000,95,1250000,4,Shade warna kurang cocok
+TRX-012,2026-10-06,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,Tokopedia,35000,15000,130,450000,2,Kemasan luar terlipat
+TRX-013,2026-10-07,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Tokopedia,75000,32000,70,510000,1,Botol tergores ringan
+TRX-014,2026-10-07,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,Shopee,45000,19000,98,490000,1,Salah pilih varian pedas
+TRX-015,2026-10-08,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,Shopee,165000,82000,54,2300000,11,Ukuran tidak sesuai chart
+TRX-016,2026-10-08,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,TikTok Shop,28000,12000,155,520000,4,Remuk tertindih paket lain
+TRX-017,2026-10-09,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Shopee,89000,44000,48,1080000,5,Takaran sendok tidak ada
+TRX-018,2026-10-09,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,Instagram Shop,65000,26000,64,390000,1,Resleting agak seret
+TRX-019,2026-10-10,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,Shopee,38000,18500,115,1620000,19,Pouch pecah saat pengiriman
+TRX-020,2026-10-10,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Instagram Shop,210000,105000,42,720000,1,Tukar ukuran lengan
+TRX-021,2026-10-11,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,Tokopedia,55000,27000,68,740000,5,Kemasan kurang kedap
+TRX-022,2026-10-11,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,Shopee,135000,68000,50,1780000,9,Benang tersangkut & sempit
+TRX-023,2026-10-12,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,Shopee,59000,21000,88,1120000,3,Aplikator kuas miring
+TRX-024,2026-10-12,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,Shopee,35000,15000,145,510000,2,Kurir salah alamat
+TRX-025,2026-10-13,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Instagram Shop,75000,32000,62,430000,0,Tidak ada retur
+TRX-026,2026-10-13,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,Tokopedia,45000,19000,90,460000,1,Segel tutup penyok
+TRX-027,2026-10-14,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,165000,82000,65,2950000,15,Ukuran tidak sesuai chart
+TRX-028,2026-10-14,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,Tokopedia,28000,12000,132,380000,2,Cokelat meleleh di jalan
+TRX-029,2026-10-15,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,TikTok Shop,89000,44000,56,1320000,7,Rasa terlalu pahit
+TRX-030,2026-10-15,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,65000,26000,84,560000,2,Salah kirim motif
+TRX-031,2026-10-16,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,TikTok Shop,38000,18500,135,1980000,25,Pouch pecah saat pengiriman
+TRX-032,2026-10-16,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Shopee,210000,105000,35,640000,1,Warna sedikit beda foto
+TRX-033,2026-10-17,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,TikTok Shop,55000,27000,76,890000,8,Kemasan kurang kedap
+TRX-034,2026-10-17,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,Instagram Shop,135000,68000,44,1490000,8,Benang tersangkut & sempit
+TRX-035,2026-10-18,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,Tokopedia,59000,21000,80,980000,2,Shade warna kurang cocok
+TRX-036,2026-10-18,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,TikTok Shop,35000,15000,160,620000,3,Kemasan luar terlipat
+TRX-037,2026-10-19,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Shopee,75000,32000,92,690000,2,Kurir terlambat
+TRX-038,2026-10-19,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,TikTok Shop,45000,19000,125,610000,2,Segel tutup penyok
+TRX-039,2026-10-20,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,165000,82000,72,3400000,17,Ukuran tidak sesuai chart
+TRX-040,2026-10-20,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,Shopee,28000,12000,148,440000,3,Remuk tertindih paket lain
+TRX-041,2026-10-21,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Tokopedia,89000,44000,50,1100000,5,Rasa terlalu pahit
+TRX-042,2026-10-21,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,Shopee,65000,26000,76,470000,1,Salah kirim motif
+TRX-043,2026-10-22,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,TikTok Shop,38000,18500,128,1850000,23,Pouch pecah saat pengiriman
+TRX-044,2026-10-22,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Tokopedia,210000,105000,40,710000,2,Warna sedikit beda foto
+TRX-045,2026-10-23,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,Shopee,55000,27000,70,760000,6,Kemasan kurang kedap
+TRX-046,2026-10-23,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,135000,68000,62,2150000,12,Benang tersangkut & sempit
+TRX-047,2026-10-24,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,TikTok Shop,59000,21000,102,1340000,4,Shade warna kurang cocok
+TRX-048,2026-10-24,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,Tokopedia,35000,15000,138,480000,2,Kemasan luar terlipat
+TRX-049,2026-10-25,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Tokopedia,75000,32000,74,540000,1,Botol tergores ringan
+TRX-050,2026-10-25,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,Shopee,45000,19000,104,520000,2,Salah pilih varian pedas
+TRX-051,2026-10-26,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,Shopee,165000,82000,58,2480000,12,Ukuran tidak sesuai chart
+TRX-052,2026-10-26,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,TikTok Shop,28000,12000,162,550000,4,Cokelat meleleh di jalan
+TRX-053,2026-10-27,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Shopee,89000,44000,46,1040000,5,Rasa terlalu pahit
+TRX-054,2026-10-27,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,Instagram Shop,65000,26000,68,410000,1,Resleting agak seret
+TRX-055,2026-10-28,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,Shopee,38000,18500,118,1690000,20,Pouch pecah saat pengiriman
+TRX-056,2026-10-28,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Instagram Shop,210000,105000,45,760000,1,Tukar ukuran lengan
+TRX-057,2026-10-29,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,Tokopedia,55000,27000,74,810000,6,Kemasan kurang kedap
+TRX-058,2026-10-29,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,Shopee,135000,68000,52,1840000,10,Benang tersangkut & sempit
+TRX-059,2026-10-30,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,Shopee,59000,21000,90,1150000,3,Aplikator kuas miring
+TRX-060,2026-10-30,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,Shopee,35000,15000,150,530000,2,Kurir salah alamat
+TRX-061,2026-11-01,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Shopee,75000,32000,96,710000,2,Kurir terlambat
+TRX-062,2026-11-01,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,TikTok Shop,45000,19000,130,640000,2,Segel tutup penyok
+TRX-063,2026-11-02,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,165000,82000,68,3150000,16,Ukuran tidak sesuai chart
+TRX-064,2026-11-02,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,Shopee,28000,12000,152,460000,3,Cokelat meleleh di jalan
+TRX-065,2026-11-03,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Tokopedia,89000,44000,54,1190000,6,Rasa terlalu pahit
+TRX-066,2026-11-03,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,Shopee,65000,26000,82,510000,1,Salah kirim motif
+TRX-067,2026-11-04,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,TikTok Shop,38000,18500,140,2050000,26,Pouch pecah saat pengiriman
+TRX-068,2026-11-04,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Tokopedia,210000,105000,41,730000,2,Warna sedikit beda foto
+TRX-069,2026-11-05,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,Shopee,55000,27000,75,830000,7,Kemasan kurang kedap
+TRX-070,2026-11-05,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,135000,68000,64,2240000,13,Benang tersangkut & sempit
+TRX-071,2026-11-06,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,TikTok Shop,59000,21000,108,1410000,4,Shade warna kurang cocok
+TRX-072,2026-11-06,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,Tokopedia,35000,15000,142,490000,2,Kemasan luar terlipat
+TRX-073,2026-11-07,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Tokopedia,75000,32000,78,560000,1,Botol tergores ringan
+TRX-074,2026-11-07,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,Shopee,45000,19000,106,530000,2,Salah pilih varian pedas
+TRX-075,2026-11-08,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,Shopee,165000,82000,62,2620000,13,Ukuran tidak sesuai chart
+TRX-076,2026-11-08,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,TikTok Shop,28000,12000,168,580000,4,Remuk tertindih paket lain
+TRX-077,2026-11-09,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Shopee,89000,44000,49,1090000,5,Takaran sendok tidak ada
+TRX-078,2026-11-09,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,Instagram Shop,65000,26000,72,440000,1,Resleting agak seret
+TRX-079,2026-11-10,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,Shopee,38000,18500,122,1740000,21,Pouch pecah saat pengiriman
+TRX-080,2026-11-10,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Instagram Shop,210000,105000,46,790000,1,Tukar ukuran lengan
+TRX-081,2026-11-11,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,Tokopedia,55000,27000,79,860000,7,Kemasan kurang kedap
+TRX-082,2026-11-11,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,Shopee,135000,68000,56,1960000,11,Benang tersangkut & sempit
+TRX-083,2026-11-11,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,Shopee,59000,21000,115,1520000,4,Shade warna kurang cocok
+TRX-084,2026-11-11,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,Shopee,35000,15000,175,640000,3,Kurir salah alamat
+TRX-085,2026-11-12,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Shopee,75000,32000,104,780000,2,Kurir terlambat
+TRX-086,2026-11-12,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,TikTok Shop,45000,19000,138,690000,2,Segel tutup penyok
+TRX-087,2026-11-12,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,165000,82000,75,3550000,18,Ukuran tidak sesuai chart
+TRX-088,2026-11-13,SKU-04,Keripik Pisang Lumer Cokelat,Produk Keluarga,Penerus Keluarga,Shopee,28000,12000,160,490000,3,Cokelat meleleh di jalan
+TRX-089,2026-11-13,SKU-05,Ceremonial Matcha Latte Pack,F&B Kekinian,Mandiri Gen-Z,Tokopedia,89000,44000,58,1280000,6,Rasa terlalu pahit
+TRX-090,2026-11-13,SKU-06,Tote Bag Kanvas Ilustrasi Lokal,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,65000,26000,90,610000,2,Salah kirim motif
+TRX-091,2026-11-14,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,TikTok Shop,38000,18500,145,2150000,27,Pouch pecah saat pengiriman
+TRX-092,2026-11-14,SKU-08,Batik Viscose Modern Keluarga,Produk Keluarga,Penerus Keluarga,Tokopedia,210000,105000,44,760000,2,Warna sedikit beda foto
+TRX-093,2026-11-14,SKU-09,Abon Sapi Asli Warisan Nenek,Produk Keluarga,Penerus Keluarga,TikTok Shop,55000,27000,82,940000,8,Kemasan kurang kedap
+TRX-094,2026-11-14,SKU-10,Cardigan Rajut Pastel Aesthetic,Fashion & Craft,Mandiri Gen-Z,TikTok Shop,135000,68000,66,2320000,13,Benang tersangkut & sempit
+TRX-095,2026-11-15,SKU-11,Lip Tint Herbal Ekstrak Mawar,Personal Care Lokal,Mandiri Gen-Z,TikTok Shop,59000,21000,112,1480000,4,Shade warna kurang cocok
+TRX-096,2026-11-15,SKU-12,Bumbu Rendang Instan Mama,Produk Keluarga,Penerus Keluarga,TikTok Shop,35000,15000,168,610000,3,Kemasan luar terlipat
+TRX-097,2026-11-15,SKU-01,Kopi Susu Gula Aren 1L,F&B Kekinian,Mandiri Gen-Z,Instagram Shop,75000,32000,68,470000,0,Tidak ada retur
+TRX-098,2026-11-15,SKU-03,Kemeja Linen Oversize Gen-Z,Fashion & Craft,Mandiri Gen-Z,Shopee,165000,82000,60,2550000,12,Ukuran tidak sesuai chart
+TRX-099,2026-11-15,SKU-07,Basreng Daun Jeruk Pedas 500g,F&B Kekinian,Mandiri Gen-Z,Shopee,38000,18500,126,1810000,22,Pouch pecah saat pengiriman
+TRX-100,2026-11-15,SKU-02,Sambal Cumi Resep Ibu 250g,Produk Keluarga,Penerus Keluarga,Shopee,45000,19000,115,560000,2,Segel tutup penyok
